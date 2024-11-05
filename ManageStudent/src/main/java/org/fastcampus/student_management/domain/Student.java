@@ -34,7 +34,23 @@ public class Student {
         return activated;
     }
 
-    public void setActivated(boolean activated) { // 활성화 상태 변경 메서드 추가
-        this.activated = activated;
+    //  유지보수가 어려워짐
+//    public void setActivated(boolean activated) { // 활성화 상태 변경 메서드 추가
+//        this.activated = activated;
+//    }
+    public void activate() {
+        if (this.activated) {
+            throw new IllegalArgumentException();
+        }
+
+        this.activated = true;
+    }
+
+    public void deactivate() {
+        if (!this.activated) {
+            throw new IllegalArgumentException();
+        }
+
+        this.activated = false;
     }
 }
