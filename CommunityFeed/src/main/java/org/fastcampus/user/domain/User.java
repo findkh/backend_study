@@ -75,4 +75,9 @@ public class User {
         return followingCounter.getCount();
     }
 
+    public UserInfo getInfo() {
+        return info;
+    }
+
+
 }
