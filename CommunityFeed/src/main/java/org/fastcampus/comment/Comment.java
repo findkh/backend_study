@@ -45,10 +45,18 @@ public class Comment {
         this.likeCounter.decrease();
     }
 
-    public  void updateComment(User user, String updatedContnent) {
-        if(this.author.equals(user)) {
-            throw new IllegalArgumentException();
+    public void updateComment(User user, String updatedContent) {
+        if (!this.author.equals(user)) {
+            throw new IllegalArgumentException("Only the author can update the comment.");
         }
-        this.content.updateContent(updatedContnent);
+        this.content.updateContent(updatedContent);
+    }
+
+    public int getLikeCounter() {
+        return likeCounter.getCount();
+    }
+
+    public String getContent() {
+        return content.getContentText();
     }
 }

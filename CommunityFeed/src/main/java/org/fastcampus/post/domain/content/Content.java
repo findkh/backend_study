@@ -3,8 +3,8 @@ package org.fastcampus.post.domain.content;
 import org.fastcampus.post.common.DatetimeInfo;
 
 public abstract class Content {
-    private String contentText;
-    final DatetimeInfo datetimeInfo;
+    protected String contentText;
+    protected final DatetimeInfo datetimeInfo;
 
     public Content(String contentText) {
         checkText(contentText);
@@ -21,6 +21,6 @@ public abstract class Content {
     public void updateContent(String updateContent) {
         checkText(updateContent);
         this.contentText = updateContent;
-//        this.datetimeInfo.updateEditDatetime();
+        this.datetimeInfo.updateEditDatetime();
     }
 }

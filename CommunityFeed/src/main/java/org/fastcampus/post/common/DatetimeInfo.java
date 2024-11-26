@@ -1,27 +1,28 @@
 package org.fastcampus.post.common;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class DatetimeInfo {
 
     private boolean isEdited;
-    private LocalDate dateTime;
+    private LocalDateTime dateTime;
 
     public DatetimeInfo() {
         this.isEdited = false;
-        this.dateTime = LocalDate.now();
+        this.dateTime = LocalDateTime.now();
     }
 
     public boolean isEdited() {
         return isEdited;
     }
 
-    public LocalDate getDateTime() {
+    public LocalDateTime getDateTime() {
         return dateTime;
     }
 
     public void updateEditDatetime() {
         this.isEdited = true;
-        this.dateTime = LocalDate.now();
+        this.dateTime = LocalDateTime.now();
     }
 }
