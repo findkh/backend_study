@@ -1,7 +1,9 @@
 package org.fastcampus.comment;
 
+import java.util.Optional;
 import org.fastcampus.common.PositiveIntegerCounter;
 import org.fastcampus.post.domain.Post;
+import org.fastcampus.post.domain.content.CommentContent;
 import org.fastcampus.post.domain.content.Content;
 import org.fastcampus.user.domain.User;
 
@@ -11,6 +13,10 @@ public class Comment {
     private final User author;
     private final Content content;
     private final PositiveIntegerCounter likeCounter;
+
+    public static Comment createComment(Post post, User author, String content){
+        return new Comment(null, post, author, new CommentContent(content));
+    }
 
     public Comment(Long id, Post post, User author, Content content) {
 
@@ -58,5 +64,21 @@ public class Comment {
 
     public String getContent() {
         return content.getContentText();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public Content getContentObject() {
+        return content;
     }
 }
