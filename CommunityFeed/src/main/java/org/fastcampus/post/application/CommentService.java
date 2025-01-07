@@ -62,7 +62,7 @@ public class CommentService {
 
         if(likeRepository.checkLike(comment, user)) {
             comment.unLike(user);
-            likeRepository.like(comment, user);
+            likeRepository.unLike(comment, user);
         }
     }
 }

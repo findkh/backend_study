@@ -13,7 +13,7 @@ public class Post {
     private final PositiveIntegerCounter likeCount;
     private PostPublicationState state;
 
-    public static Post createDeafaultPost(Long id, User author, String content, PostPublicationState state) {
+    public static Post createPost(Long id, User author, String content, PostPublicationState state) {
         return new Post(id, author, new PostContent(content), state);
     }
 
