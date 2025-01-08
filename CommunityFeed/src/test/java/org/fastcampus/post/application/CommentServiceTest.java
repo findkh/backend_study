@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.fastcampus.comment.Comment;
 import org.fastcampus.post.application.dto.LikeRequestDto;
 import org.fastcampus.post.application.dto.UpdateCommentRequestDto;
-import org.fastcampus.post.domain.content.Content;
 import org.junit.jupiter.api.Test;
 
 public class CommentServiceTest extends PostApplicationTestTemplate {

@@ -1,7 +1,6 @@
 package org.fastcampus.comment;
 
-import java.util.Optional;
-import org.fastcampus.common.PositiveIntegerCounter;
+import org.fastcampus.common.domain.PositiveIntegerCounter;
 import org.fastcampus.post.domain.Post;
 import org.fastcampus.post.domain.content.CommentContent;
 import org.fastcampus.post.domain.content.Content;

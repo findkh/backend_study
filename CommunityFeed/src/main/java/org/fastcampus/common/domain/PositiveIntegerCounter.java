@@ -1,10 +1,14 @@
-package org.fastcampus.common;
+package org.fastcampus.common.domain;
 
 public class PositiveIntegerCounter {
     private int count;
 
     public PositiveIntegerCounter() {
         this.count = 0;
+    }
+
+    public PositiveIntegerCounter(int count) {
+        this.count = count;
     }
 
     public void increase() {
