@@ -28,7 +28,10 @@ public class UserEntity extends TimeBaseEntity {
     private Integer followerCount;
     private Integer followingCount;
 
-    public UserEntity(Long id, User user) {
+//    @OneToMany => 잘 안씀
+//    private List<PostEntity> posts;
+
+    public UserEntity(User user) {
         this.id = id;
         this.name = user.getName();
         this.profileImages = user.getProfileImageUrl();
