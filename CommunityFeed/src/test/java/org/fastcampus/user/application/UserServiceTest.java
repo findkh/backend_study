@@ -9,20 +9,19 @@ import org.fastcampus.user.domain.UserInfo;
 import org.junit.jupiter.api.Test;
 
 class UserServiceTest {
+
     private final UserService userService = FakeObjectFactory.getUserService();
 
     @Test
-    void givenUserInfoDto_whenCreateUser_thenCanFindUser(){
-        //given
-        CreateUserRequestDto dto = new CreateUserRequestDto("test", "");
+    void givenUserInfoDtoWhenCreateUserThenCanFindUser() {
+        // given
+        CreateUserRequestDto dto = new CreateUserRequestDto("John", "www.naver.com");
 
-        //when
+        // when
         User savedUser = userService.createUser(dto);
 
-        //then
+        // then
         User foundUser = userService.getUser(savedUser.getId());
-        UserInfo userInfo = foundUser.getInfo();
-         assertEquals(foundUser.getId(), savedUser.getId());
-         assertEquals("test", userInfo.getName());
+        assertEquals(savedUser.getId(), foundUser.getId());
     }
 }

@@ -1,29 +1,28 @@
 package org.fastcampus.user.application;
 
+import lombok.RequiredArgsConstructor;
 import org.fastcampus.user.application.dto.FollowUserRequestDto;
 import org.fastcampus.user.application.interfaces.UserRelationRepository;
-import org.fastcampus.user.application.interfaces.UserRepository;
 import org.fastcampus.user.domain.User;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class UserRelationService {
-    private final UserService userService;
-    private final UserRelationRepository userRelationRepository;
 
-    public UserRelationService(UserService userService,
-            UserRelationRepository userRelationRepository) {
-        this.userService = userService;
-        this.userRelationRepository = userRelationRepository;
-    }
+    private final UserRelationRepository userRelationRepository;
+    private final UserService userService;
 
     public void follow(FollowUserRequestDto dto) {
         User user = userService.getUser(dto.userId());
         User targetUser = userService.getUser(dto.targetUserId());
 
-        if(userRelationRepository.isAlreadyFollowing(user, targetUser)) {
-            throw new IllegalArgumentException();
+        if (userRelationRepository.isAlreadyFollow(user, targetUser)) {
+            throw new IllegalArgumentException("Already followed");
         }
 
         user.follow(targetUser);
+
         userRelationRepository.save(user, targetUser);
     }
 
@@ -31,12 +30,12 @@ public class UserRelationService {
         User user = userService.getUser(dto.userId());
         User targetUser = userService.getUser(dto.targetUserId());
 
-        if(!userRelationRepository.isAlreadyFollowing(user, targetUser)) {
-            throw new IllegalArgumentException();
+        if (!userRelationRepository.isAlreadyFollow(user, targetUser)) {
+            throw new IllegalArgumentException("Not followed yet");
         }
 
         user.unfollow(targetUser);
-        userRelationRepository.save(user, targetUser);
-    }
 
+        userRelationRepository.delete(user, targetUser);
+    }
 }

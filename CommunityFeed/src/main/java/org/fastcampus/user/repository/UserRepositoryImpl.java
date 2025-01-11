@@ -1,5 +1,6 @@
 package org.fastcampus.user.repository;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.fastcampus.user.application.interfaces.UserRepository;
 import org.fastcampus.user.domain.User;
@@ -8,7 +9,7 @@ import org.fastcampus.user.repository.jpa.JpaUserRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 
     private final JpaUserRepository jpaUserRepository;
@@ -22,7 +23,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findById(Long id) {
-        UserEntity entity = jpaUserRepository.findById(id).orElseThrow(IllegalArgumentException::new);
-        return entity.toUser();
+        UserEntity userEntity = jpaUserRepository
+                .findById(id)
+                .orElseThrow(IllegalArgumentException::new);
+        return userEntity.toUser();
     }
 }

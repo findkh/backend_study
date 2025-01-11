@@ -1,25 +1,26 @@
 package org.fastcampus.common.domain;
 
 public class PositiveIntegerCounter {
+
     private int count;
 
-    public PositiveIntegerCounter() {
-        this.count = 0;
+    public PositiveIntegerCounter(int likeCount) {
+        this.count = likeCount;
     }
 
-    public PositiveIntegerCounter(int count) {
-        this.count = count;
+    public PositiveIntegerCounter() {
+        this(0);
     }
 
     public void increase() {
-        this.count++;
+        count++;
     }
 
     public void decrease() {
-        if(count <= 0) {
+        if (count <= 0) {
             return;
         }
-        this.count--;
+        count--;
     }
 
     public int getCount() {

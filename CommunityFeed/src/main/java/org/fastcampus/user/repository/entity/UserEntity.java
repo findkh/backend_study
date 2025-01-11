@@ -12,29 +12,28 @@ import org.fastcampus.common.domain.PositiveIntegerCounter;
 import org.fastcampus.common.repository.entity.TimeBaseEntity;
 import org.fastcampus.user.domain.User;
 import org.fastcampus.user.domain.UserInfo;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "community_user")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@DynamicUpdate
 public class UserEntity extends TimeBaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String profileImages;
+    private String profileImage;
     private Integer followerCount;
     private Integer followingCount;
 
-//    @OneToMany => 잘 안씀
-//    private List<PostEntity> posts;
-
     public UserEntity(User user) {
-        this.id = id;
+        this.id = user.getId();
         this.name = user.getName();
-        this.profileImages = user.getProfileImageUrl();
+        this.profileImage = user.getProfileImage();
         this.followerCount = user.followerCount();
         this.followingCount = user.followingCount();
     }
@@ -42,9 +41,9 @@ public class UserEntity extends TimeBaseEntity {
     public User toUser() {
         return User.builder()
                 .id(id)
-                .info(new UserInfo(name, profileImages) )
-                .followerCounter(new PositiveIntegerCounter(followerCount))
-                .followingCounter(new PositiveIntegerCounter(followingCount))
+                .userInfo(new UserInfo(name, profileImage))
+                .followerCount(new PositiveIntegerCounter(followerCount))
+                .followingCount(new PositiveIntegerCounter(followingCount))
                 .build();
     }
 }

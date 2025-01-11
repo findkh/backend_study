@@ -9,7 +9,7 @@ public class FakeUserRelationRepository implements UserRelationRepository {
     private final Set<Relation> store = new HashSet<>();
 
     @Override
-    public boolean isAlreadyFollowing(User user, User targetUser) {
+    public boolean isAlreadyFollow(User user, User targetUser) {
         return store.contains(new Relation(user.getId(), targetUser.getId()));
     }
 

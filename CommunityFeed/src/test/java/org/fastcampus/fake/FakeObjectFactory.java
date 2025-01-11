@@ -24,7 +24,7 @@ public class FakeObjectFactory {
     private static final LikeRepository fakeLikeRepository = new FakeLikeRepository();
 
     private static final UserService userService = new UserService(fakeUserRepository);
-    private static final UserRelationService userRelationService = new UserRelationService(userService, fakeUserRelationRepository);
+    private static final UserRelationService userRelationService = new UserRelationService(fakeUserRelationRepository, userService);
     private static final PostService postService = new PostService(userService, fakePostRepository, fakeLikeRepository);
     private static final CommentService commentService = new CommentService(fakeCommentRepository,
             userService, postService, fakeLikeRepository);
