@@ -11,12 +11,10 @@ import org.fastcampus.user.domain.User;
 
 @Builder
 @AllArgsConstructor
+@Getter
 public class Comment {
-    @Getter
     private final Long id;
-    @Getter
     private final Post post;
-    @Getter
     private final User author;
     private final Content content;
     private final PositiveIntegerCounter likeCounter;
